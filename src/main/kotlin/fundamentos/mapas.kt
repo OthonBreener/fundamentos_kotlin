@@ -5,8 +5,10 @@ import java.util.TreeMap
 fun main() {
     // armazernar_binario()
     interando_em_colecao()
+    val map = mapOf(1 to "One", 7 to "seven")
+    println(map)
 }
-// TreeMap = Parecido com um dicionario, amarzena valores na ordem crescente.
+// TreeMap = Parecido com um dicionario ordenado, amarzena valores na ordem crescente.
 
 fun armazernar_binario() {
 
