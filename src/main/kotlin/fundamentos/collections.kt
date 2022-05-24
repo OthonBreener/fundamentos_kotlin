@@ -1,9 +1,9 @@
 package fundamentos
 
 fun main() {
-    // listas()
-    //sets()
-    maps()
+    listas()
+    // sets()
+    // maps()
 }
 
 fun maps() {
