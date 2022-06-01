@@ -13,8 +13,8 @@ class Carro(var cor: String, var ano: Int, val dono: Dono) {
 fun main() {
     // é a função que é executada quando o arquivo é executado
 
-    var dono = Dono("Othon", 21)
-    var carro = Carro("Branco", 2021, dono)
+    val dono = Dono("Othon", 21)
+    val carro = Carro("Branco", 2021, dono)
     println(carro.cor)
     println(carro.ano)
     carro.ano = 2022
