@@ -3,14 +3,14 @@ package orientacao_a_objetos
 interface Conta {
     fun sacar(valor: Double): String
     fun depositar(valor: Double): String
-    fun transferir(valor: Double, numeroConta: Int): String
+    fun transferir(valor: Double, contaDestino: ContaCorrente): String
 }
 
-data class ContaCorrente(
-    val titular: String,
-    val numeroConta: Int,
-    var saldo: Double
-): Conta {
+class ContaCorrente: Conta {
+    var titular: String = ""
+    var numeroConta: Int = 0
+    var saldo: Double = 0.0
+        private set
 
     override fun sacar(valor: Double): String {
         return if (this.saldo < valor) {
@@ -26,22 +26,15 @@ data class ContaCorrente(
         return "Saldo atual: ${this.saldo}"
     }
 
-    override fun transferir (valor: Double, numeroConta: Int): String {
+    override fun transferir(valor: Double, contaDestino: ContaCorrente): String {
 
-        var transferido = false
-        for (conta in contas) {
-            if (conta.numeroConta == numeroConta) {
-                conta.saldo += valor
-                transferido = true
-            }
-        }
-        return if (!transferido) {
-            "Conta $numeroConta não encontrada!"
+        return if (this.saldo < valor) {
+            "Saldo insuficiente para realizar transferência. Saldo atual: ${this.saldo}"
         } else {
+            contaDestino.depositar(valor)
             this.saldo -= valor
-            "Valor transferido para: $numeroConta, Saldo atual: ${this.saldo}"
+            "Valor transferido! Saldo atual: ${this.saldo}."
         }
     }
 }
 
-val contas = mutableListOf<ContaCorrente>()
